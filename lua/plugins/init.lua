@@ -23,19 +23,17 @@ local plugins = {
     },
 
     {
-        "fedepujol/move.nvim",
-        lazy = false,
-    },
-
-    {
         "numToStr/Comment.nvim",
         lazy = false,
     },
 
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.5",
         dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    {
+        "nvim-lua/plenary.nvim",
     },
 
     {
@@ -108,45 +106,85 @@ local plugins = {
         "beauwilliams/statusline.lua",
     },
 
+    {
+        "chentoast/marks.nvim",
+        event = "VeryLazy",
+        opts = {},
+    },
+
     -- colorschemes
     {
         "ishan9299/modus-theme-vim",
-        enabled = false,
+        enabled = true,
         priority = 1000,
     },
 
     {
         "nyoom-engineering/oxocarbon.nvim",
-        enabled = false,
+        enabled = true,
         priority = 1000,
     },
-    { "catppuccin/nvim", name = "catppuccin", enabled = true, priority = 1000 },
+
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        enabled = true,
+        priority = 1000,
+    },
+
     {
         "scottmckendry/cyberdream.nvim",
         enabled = true,
         priority = 1000,
     },
+    {
+        "helbing/aura.nvim",
+        enabled = true,
+        priority = 1000,
+    },
+    {
+        "blazkowolf/gruber-darker.nvim",
+        enabled = true,
+    },
+    {
+        "olivercederborg/poimandres.nvim",
+        enabled = true,
+    },
+    {
+        "ramojus/mellifluous.nvim",
+        enabled = true,
+    },
+
+    {
+        "projekt0n/github-nvim-theme",
+        name = "github-theme",
+    },
+
+    {
+        "savq/melange-nvim"
+    }
 }
 
 local opts = {}
 
 require("lazy").setup(plugins, opts)
-require("move").setup({
-    line = {
-        enable = true, -- Enables line movement
-        indent = true, -- Toggles indentation
-    },
-    block = {
-        enable = true, -- Enables block movement
-        indent = true, -- Toggles indentation
-    },
-    word = {
-        enable = true, -- Enables word movement
-    },
-    char = {
-        enable = true, -- Enables char movement
-    },
-})
+
+-- require("move").setup({
+--     line = {
+--         enable = true, -- Enables line movement
+--         indent = true, -- Toggles indentation
+--     },
+--     block = {
+--         enable = true, -- Enables block movement
+--         indent = true, -- Toggles indentation
+--     },
+--     word = {
+--         enable = true, -- Enables word movement
+--     },
+--     char = {
+--         enable = true, -- Enables char movement
+--     },
+-- })
 require("lspsaga").setup({
     ui = {
         code_action = "",
@@ -166,3 +204,4 @@ require("dired").setup({
 require("Comment").setup(opts)
 require("barbar").setup(opts)
 require("buffer_manager").setup(opts)
+

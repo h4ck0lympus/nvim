@@ -1,6 +1,6 @@
 require("lsp/cmp")
 
-local servers = { "lua_ls", "clangd", "pyright", "bashls", "asm_lsp", "tsserver" }
+local servers = { "lua_ls", "clangd", "pyright", "bashls"}
 
 require("mason").setup({
     ui = {
@@ -51,3 +51,6 @@ lspconfig.pyright.setup({
     reportMissingImports = true,
     reportMissingTypeStubs = false,
 })
+
+lspconfig.bacon_ls.setup{}
+lspconfig.jdtls.setup{}

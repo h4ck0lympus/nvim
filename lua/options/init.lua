@@ -21,8 +21,12 @@ vim.o.autoindent = true
 vim.bo.autoindent = true
 vim.o.expandtab = true
 vim.bo.expandtab = true
-vim.o.showtabline = true
-vim.o.laststatus = 3
+vim.o.showtabline = 3
+vim.o.laststatus = 1
 vim.cmd("filetype plugin indent on")
+vim.cmd("nmap <F1> :echo<CR>")
+vim.cmd("imap <F1> <C-o>:echo<CR>")
+vim.cmd("set relativenumber")
+vim.cmd("set autoread")
 
 require("colorscheme")

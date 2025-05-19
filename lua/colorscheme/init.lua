@@ -1,4 +1,4 @@
-local colorscheme = "catppuccin"
+local colorscheme = "github_dark_high_contrast"
 
 local success, _ = pcall(vim.api.nvim_command, "colorscheme " .. colorscheme)
 if not success then
@@ -107,3 +107,5 @@ else
     end
 end
 vim.api.nvim_command("colorscheme " .. colorscheme)
+
+vim.cmd("highlight Normal ctermbg=NONE guiBG=None")
