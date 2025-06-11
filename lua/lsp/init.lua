@@ -1,56 +1,30 @@
-require("lsp/cmp")
+require("lsp.lsp")
 
-local servers = { "lua_ls", "clangd", "pyright", "bashls"}
+vim.api.nvim_create_user_command("Format", function()
+  vim.lsp.buf.format({ async = true })
+end, {})
 
-require("mason").setup({
-    ui = {
-        icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗",
-        },
-    },
-})
 
-require("mason-lspconfig").setup({
-    ensure_installed = servers,
-})
-local lspconfig = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
+-- lsp lsp_signature
+local cfg = {
+  floating_window_off_x = 5, -- adjust float windows x position.
+  floating_window_off_y = function() -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
+    local linenr = vim.api.nvim_win_get_cursor(0)[1] -- buf line number
+    local pumheight = vim.o.pumheight
+    local winline = vim.fn.winline() -- line number in the window
+    local winheight = vim.fn.winheight(0)
 
--- Enable the following language servers
-for _, lsp in ipairs(servers) do
-    lspconfig[lsp].setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-    })
-end
+    -- window top
+    if winline - 1 < pumheight then
+      return pumheight
+    end
 
--- override setup defaults
-lspconfig.lua_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            completion = {
-                callSnippet = "Replace",
-            },
-        },
-    },
-})
+    -- window bottom
+    if winheight - winline < pumheight then
+      return -pumheight
+    end
+    return 0
+  end,
+}
+require("lsp_signature").setup(cfg)
 
-lspconfig.pyright.setup({
-    noremap = true,
-    silent = true,
-    autoSearchPaths = true,
-    useLibraryCodeForTypes = true,
-    autoImportCompletions = true,
-    reportUnusedImport = true,
-    typeCheckingMode = "basic",
-    reportMissingImports = true,
-    reportMissingTypeStubs = false,
-})
-
-lspconfig.bacon_ls.setup{}
-lspconfig.jdtls.setup{}
