@@ -1,6 +1,6 @@
 local common = require("lsp.common")
 
-vim.lsp.config.pyright = {
+return {
     on_attach = common.on_attach,
     capabilities = common.capabilities,
     handlers = common.handlers,
@@ -25,4 +25,4 @@ vim.lsp.config.pyright = {
         },
     },
 }
-vim.lsp.enable("pyright")
+

@@ -7,7 +7,7 @@ vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
--- lsp
+-- lsp keybindings in lsp/init.lua
 -- file manager - dired
 vim.keymap.set("n", "<leader>e", ":Dired<CR>", opts)
 
@@ -15,7 +15,10 @@ vim.keymap.set("n", "<leader>e", ":Dired<CR>", opts)
 vim.keymap.set("n", "<leader>vv", ":vsplit<CR>", opts)
 vim.keymap.set("n", "<leader>hh", ":split<CR>", opts)
 
-vim.keymap.set("n", "<leader>F", ":Format<CR>", opts)
+-- format
+vim.keymap.set("n", "<leader>F", function()
+  vim.lsp.buf.format({ async = true })
+end, { noremap = true, silent = true })
 
 vim.keymap.set("n", "<C-Left>", ":vertical resize +3<CR>", opts)
 vim.keymap.set("n", "<C-Right>", ":vertical resize -3<CR>", opts)

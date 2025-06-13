@@ -1,9 +1,18 @@
 require("lsp.lsp")
+local common = require("lsp.common")
 
-vim.api.nvim_create_user_command("Format", function()
-  vim.lsp.buf.format({ async = true })
-end, {})
+-- server config
+local servers = {"pyright", "clangd", "lua_ls", "rust_analyzer"}
 
+for _, server in ipairs(servers) do
+  local ok, config = pcall(require, "lsp.servers." .. server)
+  if ok then
+    vim.lsp.config[server] = config
+    vim.lsp.enable(server)
+  else
+    vim.notify("LSP config for " .. server .. " not found", vim.log.levels.WARN)
+  end
+end
 
 -- lsp lsp_signature
 local cfg = {
@@ -28,3 +37,10 @@ local cfg = {
 }
 require("lsp_signature").setup(cfg)
 
+-- keybindings
+vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)
+vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)

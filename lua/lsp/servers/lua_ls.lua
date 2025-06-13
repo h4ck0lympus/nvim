@@ -1,5 +1,6 @@
-local common = require("lsp/common")
-vim.lsp.config.lua = {
+local common = require("lsp.common")
+
+return {
     on_attach = common.on_attach,
     capabilities = common.capabilities,
     handlers = common.handlers,
@@ -19,4 +20,3 @@ vim.lsp.config.lua = {
     },
 }
 
-vim.lsp.enable("lua")
