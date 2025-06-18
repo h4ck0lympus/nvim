@@ -29,4 +29,13 @@ return {
       require("gitsigns").setup()
     end,
   },
+
+  -- auto indentation setting detection
+  {
+	  "NMAC427/guess-indent.nvim",
+	  lazy = false,
+	  config = function()
+		  require("guess-indent").setup{}
+	  end,
+  },
 }
