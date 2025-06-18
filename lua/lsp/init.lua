@@ -2,7 +2,7 @@ require("lsp.lsp")
 local common = require("lsp.common")
 
 -- server config
-local servers = {"pyright", "clangd", "lua_ls", "rust_analyzer"}
+local servers = {"pyright", "clangd", "lua_ls", "rust-analyzer"}
 
 for _, server in ipairs(servers) do
   local ok, config = pcall(require, "lsp.servers." .. server)
@@ -38,6 +38,7 @@ local cfg = {
 require("lsp_signature").setup(cfg)
 
 -- keybindings
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 vim.keymap.set('n', '<leader>gi', vim.lsp.buf.implementation, opts)

@@ -1,15 +1,4 @@
 return {
-  -- manage language-servers
-  { "williamboman/mason.nvim", config = true },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = { "clangd", "pyright", "lua_ls", "rust_analyzer"},
-      automatic_installation = true,
-    },
-  },
-
   { "neovim/nvim-lspconfig" },
 
   {
