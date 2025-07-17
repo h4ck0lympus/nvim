@@ -30,11 +30,12 @@ return {
     end,
   },
 
+  -- auto indentation setting detection
   {
-    "NMAC427/guess-indent.nvim",
-    lazy = false,
-	config = function()
-		require('guess-indent').setup {}
-	end,
+	  "NMAC427/guess-indent.nvim",
+	  lazy = false,
+	  config = function()
+		  require("guess-indent").setup{}
+	  end,
   },
 }
