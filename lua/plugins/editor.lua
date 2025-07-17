@@ -29,4 +29,12 @@ return {
       require("gitsigns").setup()
     end,
   },
+
+  {
+    "NMAC427/guess-indent.nvim",
+    lazy = false,
+	config = function()
+		require('guess-indent').setup {}
+	end,
+  },
 }

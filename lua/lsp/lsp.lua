@@ -2,8 +2,28 @@ vim.g.completeopt = "menu,menuone,noselect"
 local cmp     = require("cmp")
 local lspkind = require("lspkind")
 
+local autocomplete_enabled = true
+function ToggleAutocomplete()
+  autocomplete_enabled = not autocomplete_enabled
+
+  cmp.setup({
+    completion = {
+      autocomplete = autocomplete_enabled
+        and { require("cmp.types").cmp.TriggerEvent.TextChanged }
+        or false,
+    },
+  })
+
+  vim.notify("Autocomplete " .. (autocomplete_enabled and "Enabled" or "Disabled"))
+end
+
+-- keybinding to toggle autocomplete
+vim.keymap.set("n", "<leader>ac", ToggleAutocomplete, { desc = "Toggle Auto Completion" })
+
 cmp.setup({
-  completion = { autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged } },
+  completion = {
+    autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
+  },
   preselect  = cmp.PreselectMode.None,
 
   mapping = {
@@ -11,7 +31,7 @@ cmp.setup({
       if cmp.visible() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
       else
-        cmp.complete()
+        fallback()
       end
     end, { "i", "s", "c" }),
 

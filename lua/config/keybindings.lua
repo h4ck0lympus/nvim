@@ -26,8 +26,8 @@ vim.keymap.set("n", "<C-Up>", ":resize +3<CR>", opts)
 vim.keymap.set("n", "<C-Down>", ":resize -3<CR>", opts)
 
 -- Move to previous/next
-vim.keymap.set("n", "<Tab>", "<Cmd>BufferPrevious<CR>", opts)
-vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferNext<CR>", opts)
+vim.keymap.set("n", "<Tab>", "<Cmd>BufferNext<CR>", opts)
+vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferPrevious<CR>", opts)
 -- Re-order to previous/next
 vim.keymap.set("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", opts)
 vim.keymap.set("n", "<A->>", "<Cmd>BufferMoveNext<CR>", opts)
