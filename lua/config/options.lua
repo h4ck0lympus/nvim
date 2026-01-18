@@ -14,10 +14,9 @@ vim.o.scrolloff = 3
 vim.o.termguicolors = true
 
 -- indentation
--- vim.o.tabstop = 4
--- vim.bo.tabstop = 4
--- vim.o.softtabstop = 4
--- vim.o.shiftwidth = 4
+vim.o.tabstop = 8 -- number of spaces that a <Tab> in the file counts for
+vim.o.softtabstop = 4 -- number of spaces that a tab counts for
+vim.o.shiftwidth = 4 
 -- vim.bo.shiftwidth = 4
 -- vim.o.autoindent = true
 -- vim.bo.autoindent = true

@@ -39,7 +39,7 @@ end
 vim.keymap.set("n", "<A-0>", "<Cmd>BufferLast<CR>", opts)
 
 
-vim.keymap.set("n", "<leader>bf", ':lua require("buffer_manager.ui").toggle_quick_menu()<CR>', opts)
+-- vim.keymap.set("n", "<leader>bf", ':lua require("buffer_manager.ui").toggle_quick_menu()<CR>', opts)
 
 -- Close buffer
 vim.keymap.set("n", "<C-g>", "<Cmd>BufferClose<CR>", opts)

@@ -33,7 +33,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s", "c" }),
+    end, { "i", "s"}),
 
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -41,7 +41,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { "i", "s", "c" }),
+    end, { "i", "s"}),
 
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
 
