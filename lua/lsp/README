@@ -1,0 +1,3 @@
+use the config in https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+
+add lsp server in init.lua and use common (see clangd.lua)

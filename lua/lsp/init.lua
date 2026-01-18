@@ -2,7 +2,7 @@ require("lsp.lsp")
 local common = require("lsp.common")
 
 -- server config
-local servers = {"pyright", "clangd", "lua_ls", "rust-analyzer"}
+local servers = {"pyright", "clangd", "lua_ls", "rust-analyzer", "html"}
 
 for _, server in ipairs(servers) do
   local ok, config = pcall(require, "lsp.servers." .. server)
