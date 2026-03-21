@@ -8,8 +8,8 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- lsp keybindings in lsp/init.lua
--- file manager - dired
-vim.keymap.set("n", "<leader>e", ":Dired<CR>", opts)
+-- file manager - nvim-tree
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- split
 vim.keymap.set("n", "<leader>vv", ":vsplit<CR>", opts)

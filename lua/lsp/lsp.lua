@@ -20,6 +20,13 @@ end
 -- keybinding to toggle autocomplete
 vim.keymap.set("n", "<leader>ac", ToggleAutocomplete, { desc = "Toggle Auto Completion" })
 
+-- toggle inlay hints
+vim.keymap.set("n", "<leader>ih", function()
+  local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = 0 })
+  vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
+  vim.notify("Inlay hints " .. (enabled and "Disabled" or "Enabled"))
+end, { desc = "Toggle Inlay Hints" })
+
 cmp.setup({
   completion = {
     autocomplete = { require("cmp.types").cmp.TriggerEvent.TextChanged },
@@ -30,6 +37,8 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-expand-or-jump)", true, true, true), "", true)
       else
         fallback()
       end
@@ -38,6 +47,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Plug>(vsnip-jump)", true, true, true), "", true)
       else
         fallback()
       end

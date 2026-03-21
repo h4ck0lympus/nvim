@@ -1,13 +1,17 @@
 return {
-  "X3eRo0/dired.nvim",
-  dependencies = "MunifTanjim/nui.nvim",
+  "nvim-tree/nvim-tree.lua",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    require("dired").setup({
-      path_separator = "/",
-      show_banner = false,
-      show_hidden = true,
-      show_dot_dirs = true,
-      show_colors = true,
+    require("nvim-tree").setup({
+      filters = {
+        dotfiles = false,
+      },
+      renderer = {
+        group_empty = true,
+      },
+      git = {
+        ignore = false
+      }
     })
   end,
 }
